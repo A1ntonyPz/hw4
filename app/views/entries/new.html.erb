@@ -1,27 +1,27 @@
 <h1>New Entry</h1>
 
-<form action="/entries" method="post" enctype="multipart/form-data">
-  <input type="hidden" name="place_id" value="<%= params["place_id"] %>">
+<%= form_with url: "/entries", method: :post, local: true, multipart: true do %>
+  <%= hidden_field_tag :place_id, params["place_id"] %>
 
   <p>
-    <label for="title_input">Title</label>
-    <input type="text" name="title" id="title_input">
+    <%= label_tag :title, "Title", for: "title_input" %>
+    <%= text_field_tag :title, nil, id: "title_input" %>
   </p>
 
   <p>
-    <label for="description_input">Description</label>
-    <textarea name="description" id="description_input"></textarea>
+    <%= label_tag :description, "Description", for: "description_input" %>
+    <%= text_area_tag :description, nil, id: "description_input" %>
   </p>
 
   <p>
-    <label for="occurred_on_input">Occurred On</label>
-    <input type="date" name="occurred_on" id="occurred_on_input">
+    <%= label_tag :occurred_on, "Occurred On", for: "occurred_on_input" %>
+    <%= date_field_tag :occurred_on, nil, id: "occurred_on_input" %>
   </p>
 
   <p>
-    <label for="uploaded_image_input">Image</label>
-    <input type="file" name="uploaded_image" id="uploaded_image_input" accept="image/png, image/jpg, image/jpeg, image/gif">
+    <%= label_tag :uploaded_image, "Image", for: "uploaded_image_input" %>
+    <%= file_field_tag :uploaded_image, id: "uploaded_image_input", accept: "image/png, image/jpg, image/jpeg, image/gif" %>
   </p>
 
-  <button class="btn btn-primary">Save</button>
-</form>
+  <%= button_tag "Save", class: "btn btn-primary" %>
+<% end %>

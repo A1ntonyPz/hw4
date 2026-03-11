@@ -16,7 +16,7 @@
       <div class="navbar-nav ms-auto">
         <% if @current_user %>
           <span class="nav-link text-white"><%= @current_user["username"] %></span>
-          <a href="/logout" class="nav-link" data-turbo-method="delete">Logout</a>
+          <%= button_to "Logout", "/logout", method: :delete, class: "btn btn-link nav-link" %>
         <% else %>
           <a href="/login" class="nav-link">Login</a>
           <a href="/users/new" class="nav-link">Signup</a>
